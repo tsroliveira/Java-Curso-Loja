@@ -43,8 +43,8 @@ public class FuncionarioController {
 	@PostMapping("/administrativo/funcionarios/salvar")
 	public ModelAndView salvar(@Validated Funcionario funcionario, BindingResult result) {  
 		
-		System.out.println(funcionario);
 		if(result.hasErrors()) {
+			//System.out.println("Funcionario: " + funcionario + "\nErro: " + result.getAllErrors());
 			return cadastrar(funcionario);
 		}
 

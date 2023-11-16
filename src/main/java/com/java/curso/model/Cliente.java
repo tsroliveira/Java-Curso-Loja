@@ -1,7 +1,6 @@
 package com.java.curso.model;
 
 import java.io.Serializable;
-import java.util.Date;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,10 +12,10 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name="entrada_produto")
-public class EntradaProduto implements Serializable{
+@Table(name="cliente")
+public class Cliente implements Serializable{
 	
-	public EntradaProduto() {
+	public Cliente() {
 		super();
 	}
 	
@@ -25,9 +24,10 @@ public class EntradaProduto implements Serializable{
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
+	private String nome;
+	private String cpf;
+	private String email;
+	private String senha;
 	@ManyToOne
-	private Funcionario funcionario;
-	private Date dataEntrada = new Date();
-	private String observacao;
-	private String fornecedor; //Transformar em Classe Posteriormente;
+	private Cidade cidade;
 }

@@ -9,14 +9,16 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
 import lombok.Data;
 
 @Entity
 @Data
-@Table(name="entrada_produto")
-public class EntradaProduto implements Serializable{
+@Table(name="compra")
+public class Compra implements Serializable{
 	
-	public EntradaProduto() {
+	public Compra() {
 		super();
 	}
 	
@@ -26,8 +28,12 @@ public class EntradaProduto implements Serializable{
 	private Long id;
 	
 	@ManyToOne
-	private Funcionario funcionario;
-	private Date dataEntrada = new Date();
-	private String observacao;
-	private String fornecedor; //Transformar em Classe Posteriormente;
+	private Cliente cliente;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date dataCompra;
+
+	private String formaPagamento;
+	private Double valorTotal;
+	@ManyToOne
+	private Cidade cidade;
 }

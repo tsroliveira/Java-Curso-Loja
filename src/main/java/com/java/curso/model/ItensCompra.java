@@ -13,10 +13,10 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name="entrada_produto")
-public class EntradaProduto implements Serializable{
+@Table(name="itens_compra")
+public class ItensCompra implements Serializable{
 	
-	public EntradaProduto() {
+	public ItensCompra() {
 		super();
 	}
 	
@@ -26,8 +26,15 @@ public class EntradaProduto implements Serializable{
 	private Long id;
 	
 	@ManyToOne
-	private Funcionario funcionario;
-	private Date dataEntrada = new Date();
-	private String observacao;
-	private String fornecedor; //Transformar em Classe Posteriormente;
+	private Produto produto;
+
+	@ManyToOne
+	private Compra compra;
+
+	private Integer quantidade=0;
+
+	private Double valorUnitario;
+	
+	private Double valorTotal;
+
 }

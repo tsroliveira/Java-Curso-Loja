@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{administrativo/fragments/layout}">
 <head>
-	<title>Página de Listagem de Cidades </title>
+	<title>Página de Listagem de Entrada de Produtos </title>
 </head>
 <body>
 
@@ -12,12 +12,12 @@
 	                <ul class="navbar-nav mr-auto">
 	                    <li class="nav-item active">
 	                        <i class="oi oi-caret-right"></i>
-	                        <span>Lista de Cidades</span>
+	                        <span>Lista de Entradas de Produtos</span>
 	                    </li>
 	                </ul>
-	                <a class="btn btn-primary btn-md" href="/administrativo/cidades/cadastrar" role="button">
+	                <a class="btn btn-primary btn-md" href="/administrativo/entradas/cadastrar" role="button">
 	                    <span class="oi oi-plus" title="Cadastro" aria-hidden="true"></span>
-	                    <span>Cadastrar Cidades</span>
+	                    <span>Cadastrar Entrada</span>
 	                </a>
 	            </div>
 	        </nav>
@@ -36,42 +36,41 @@
 	                    </tr>
 	                    </thead>
 	                    <tbody>
-	                    <tr th:each="cidades : ${listaCidades}">
-	                        <td th:text="${cidades.id}"></td>
-	                        <td th:text="${cidades.nome}"></td>
-	                        <td th:text="${cidades.estado.nome}"></td>
-	                        <td th:text="${cidades.estado.sigla}"></td>
-	                        <td colspan="2">
-	                            
-	                        	<a class="btn btn-info btn-sm" th:href="@{/administrativo/cidades/editar/{id}(id=${cidades.id})}" role="button">
-	                                <span class="oi oi-brush" title="Editar" aria-hidden="true"></span>
-	                            </a>
-	                            
-	                            <a class="btn btn-danger btn-sm text-light" data-toggle="modal" data-target="#modal-warning" th:attr="data-target='#modal-warning'+${cidades.id}">
-	                            	<span class="oi oi-circle-x" title="Excluir" aria-hidden="true"></span>
-	                            </a>
-	                            
-	                            <div class="modal modal-warning fade in" th:id="modal-warning+${cidades.id}" >
-		                            <div class="modal-dialog">
-		                                <div class="modal-content">
-		                                    <div class="modal-header">
-		                                    	<h5 class="modal-title">Remover Cidade</h5>
-		                                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-		                                        <span aria-hidden="true">×</span></button>
-		                                    </div>
-		                                    <div class="modal-body">
-		                                        <h3>Deseja realmente remover o cidades?</h3>
-		                                    </div>
-		                                    <div class="modal-footer">
-		                                        <a type="button" class="btn btn-outline-danger" th:href="@{/administrativo/cidades/remover/{id}(id=${cidades.id})}"><i class="fa fa-check"></i>&nbsp;Sim</a>
-		                                        <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Fechar</button>
-		                                    </div>
-		                                </div>
-		                            </div>
-		                        </div>
-	                            
-	                        </td>
-	                    </tr>
+		                    <tr th:each="entradas : ${listaEntradaItens}">
+		                        <td th:text="${entradas.id}"></td>
+		                        <td th:text="${entradas.quantidade}"></td>
+		                        <td th:text="${entradas.valor}"></td>
+		                        <td th:text="${entradas.id}"></td>
+		                        <td colspan="2">
+		                            
+		                        	<a class="btn btn-info btn-sm" th:href="@{/administrativo/entradas/editar/{id}(id=${entradas.id})}" role="button">
+		                                <span class="oi oi-brush" title="Editar" aria-hidden="true"></span>
+		                            </a>
+		                            
+		                            <a class="btn btn-danger btn-sm text-light" data-toggle="modal" data-target="#modal-warning" th:attr="data-target='#modal-warning'+${entradas.id}">
+		                            	<span class="oi oi-circle-x" title="Excluir" aria-hidden="true"></span>
+		                            </a>
+		                            
+		                            <div class="modal modal-warning fade in" th:id="modal-warning+${entradas.id}" >
+			                            <div class="modal-dialog">
+			                                <div class="modal-content">
+			                                    <div class="modal-header">
+			                                    	<h5 class="modal-title">Remover Cidade</h5>
+			                                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+			                                        <span aria-hidden="true">×</span></button>
+			                                    </div>
+			                                    <div class="modal-body">
+			                                        <h3>Deseja realmente remover o entradas?</h3>
+			                                    </div>
+			                                    <div class="modal-footer">
+			                                        <a type="button" class="btn btn-outline-danger" th:href="@{/administrativo/entradas/remover/{id}(id=${entradas.id})}"><i class="fa fa-check"></i>&nbsp;Sim</a>
+			                                        <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Fechar</button>
+			                                    </div>
+			                                </div>
+			                            </div>
+			                        </div>
+		                        </td>
+		                    </tr>
 	                    </tbody>
 	                </table>
 	            </div>

@@ -47,8 +47,8 @@ public class SecurityConfiguration {
 	         .permitAll()
 	    ).exceptionHandling( (ex) -> ex
 	         .accessDeniedPage("/negado")
-	    )//.csrf()
-	  		//.ignoringRequestMatchers("/**")
+	    ).csrf()
+	  		.ignoringRequestMatchers("/**")
 	  	;	   	
 	   	return http.build();
 	}
