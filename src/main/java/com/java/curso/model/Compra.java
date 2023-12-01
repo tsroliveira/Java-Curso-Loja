@@ -33,7 +33,7 @@ public class Compra implements Serializable{
 	private Date dataCompra;
 
 	private String formaPagamento;
-	private Double valorTotal;
+	private Double valorTotal=0.;
 	@ManyToOne
 	private Cidade cidade;
 }
