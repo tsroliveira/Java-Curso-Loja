@@ -7,88 +7,96 @@
 
 <body>
 	<section class="layout-content" layout:fragment="corpo">
-		<div class="py-5">
-			<div class="container mb-4">
-				<div class="row">
-					<div class="col-12">
-						<h2>Informações do Cliente</h2>
-					</div>
-					<div class="col-8">
-						<h2>Forma de Pagamento</h2>
-						<select class="form-control">
-							<option value="cartaoDeCredito">Cartão de Crédito</option>
-							<option value="boleto">Boleto Bancário</option>
-							<option value="pix">PIX</option>
-						</select>
-					</div>
-					<div class="col-12">
-						<div class="table-responsive">
-							<table class="table table-striped">
-								<thead>
-									<tr>
-										<th scope="col"> </th>
-										<th scope="col">Produto</th>
-										<th scope="col">Estoque</th>
-										<th scope="col" class="text-center">Quantidade</th>
-										<th scope="col" class="text-right">Valor Unitário</th>
-										<th scope="col" class="text-right">Valor Total</th>
-										<th></th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr th:each="item : ${listaItens}">
-										<td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
-										<td th:text="${item.produto.descricao}"></td>
-										<td>Em estoque</td>
-										<td class="text-center"><span th:text="${item.quantidade}"></span></td>
-										<td class="text-right"><span th:text="${item.valorUnitario}"></span></td>
-										<td class="text-right"><span th:text="${item.valorTotal}"></span></td>
-										<td class="text-right"></td>
-									</tr>
-									
-									<tr>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td class="text-right">Sub-Total</td>
-										<td class="text-right"><span th:text="${compra.valorTotal}"></span> € &nbsp;</td>
-									</tr>
-									<tr>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td></td>
-										<td class="text-right">Frete</td>
-										<td class="text-right">0,00 € &nbsp;</td>
-									</tr>
-									<tr>
-										<td></td>
-										<td></td>
-										<td></td> 
-										<td></td>
-										<td></td>
-										<td class="text-right"><strong>Total</strong></td>
-										<td class="text-right"><strong><span th:text="${compra.valorTotal}"></span> €</strong> &nbsp;</td>
-									</tr>
-								</tbody>
-							</table>
+		<form action="/finalizar/confirmar2123123" method="POST">
+			<div class="py-5">
+				<div class="container mb-4">
+					<div class="row">
+						<div class="col-12">
+							<h2><span th:text="${cliente.nome}"></span></h2>
+							<h2><span th:text="${cliente.email}"></span></h2>
+							<br>
 						</div>
-					</div>
-					<div class="col mb-2">
-						<div class="row">
-							<div class="col-sm-6">
+						<div class="col-8">
+							<h2>Forma de Pagamento</h2>
+							<select class="form-control" name="formaPagamento">
+								<option value="cartaoDeCredito">Cartão de Crédito</option>
+								<option value="boleto">Boleto Bancário</option>
+								<option value="pix">PIX</option>
+							</select>
+							<br>
+						</div>
+						<div class="col-12">
+							<div class="table-responsive">
+								<table class="table table-striped">
+									<thead>
+										<tr>
+											<th scope="col"> </th>
+											<th scope="col">Produto</th>
+											<th scope="col">Estoque</th>
+											<th scope="col" class="text-center">Quantidade</th>
+											<th scope="col" class="text-right">Valor Unitário</th>
+											<th scope="col" class="text-right">Valor Total</th>
+											<th></th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr th:each="item : ${listaItens}">
+											<td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
+											<td th:text="${item.produto.descricao}"></td>
+											<td>Em estoque</td>
+											<td class="text-center"><span th:text="${item.quantidade}"></span></td>
+											<td class="text-right"><span th:text="${item.valorUnitario}"></span></td>
+											<td class="text-right"><span th:text="${item.valorTotal}"></span></td>
+											<td class="text-right"></td>
+										</tr>
+
+										<tr>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td class="text-right">Sub-Total</td>
+											<td class="text-right"><span th:text="${compra.valorTotal}"></span> € &nbsp;
+											</td>
+										</tr>
+										<tr>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td class="text-right">Frete</td>
+											<td class="text-right">0,00 € &nbsp;</td>
+										</tr>
+										<tr>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td class="text-right"><strong>Total</strong></td>
+											<td class="text-right"><strong><span th:text="${compra.valorTotal}"></span>
+													€</strong> &nbsp;</td>
+										</tr>
+									</tbody>
+								</table>
 							</div>
-							<div class="col-sm-6 text-end">
-								<a class="btn btn-lg btn-block btn-success text-light" th:href="finalizar">Confirmar Compra</a>
+						</div>
+						<div class="col mb-2">
+							<div class="row">
+								<div class="col-sm-6">
+								</div>
+								<div class="col-sm-6 text-end">
+									<a class="btn btn-lg btn-block btn-success text-light" th:href="finalizar">Confirmar
+										Compra</a>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
+		</form>
 	</section>
 </body>
 
