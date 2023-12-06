@@ -13,35 +13,33 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
-@Order(1)
-public class SecurityCliente {
+public class SecurityConfiguration {
 	
-	//@Bean
+	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
 	
-	//@Bean
+	@Bean
 	protected UserDetailsManager auth(DataSource dataSource) {
         JdbcUserDetailsManager auth = new JdbcUserDetailsManager(dataSource);
         
-		auth.setUsersByUsernameQuery("select email as username, senha as password, 1 as enable from cliente where email=?");
-		auth.setAuthoritiesByUsernameQuery("select email as username, 'cliente' as authority from cliente where email=?");
+		auth.setUsersByUsernameQuery("select email as username, senha as password, 1 as enable from funcionario where email=?");
+		auth.setAuthoritiesByUsernameQuery("select funcionario.email as username, perfil.nome as authority from permissoes inner join funcionario on funcionario.id=permissoes.funcionario_id inner join perfil on perfil.id=permissoes.perfil_id where funcionario.email=? limit 1");
+		//auth.setPasswordEncoder(new BCryptPasswordEncoder());		
 		return auth;
 	}	
     
-	//@Bean
+	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 	   http.authorizeHttpRequests( (authorize) -> authorize
+			 .requestMatchers("/administrativo/**").hasAnyAuthority("gerente", "vendedor")
 			 .requestMatchers("/finalizar/**").hasAnyAuthority("cliente")
-			 .anyRequest().authenticated()
+			 .anyRequest().authenticated() 									//.requestMatchers("/**").permitAll()
 	   ).formLogin( (form) -> form
-	         .loginPage("/cliente/cadastrar")
-	         .loginProcessingUrl("/finalizar/login")
-	         .defaultSuccessUrl("/finalizar", true)
-	         .failureUrl("/cliente/cadastrar")
-	         .usernameParameter("username")
-	         .passwordParameter("password")
+	         .loginPage("/login")
+	         .defaultSuccessUrl("/", true)
+	         .failureUrl("/login-error")
 	         .permitAll()
 	    ).logout( (logout) -> logout
 		     .logoutSuccessUrl("/logout")
@@ -50,8 +48,7 @@ public class SecurityCliente {
 	         .permitAll()
 	    ).exceptionHandling( (ex) -> ex
 	         .accessDeniedPage("/negado")
-	    )//.csrf()
-	  		//.ignoringRequestMatchers("/**")
+	    )//.csrf().ignoringRequestMatchers("/**")
 	  	;	   	
 	   	return http.build();
 	}

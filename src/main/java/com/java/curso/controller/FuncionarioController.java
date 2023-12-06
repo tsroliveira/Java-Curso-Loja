@@ -44,7 +44,6 @@ public class FuncionarioController {
 	public ModelAndView salvar(@Validated Funcionario funcionario, BindingResult result) {  
 		
 		if(result.hasErrors()) {
-			//System.out.println("Funcionario: " + funcionario + "\nErro: " + result.getAllErrors());
 			return cadastrar(funcionario);
 		}
 

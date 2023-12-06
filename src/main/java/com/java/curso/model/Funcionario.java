@@ -3,6 +3,7 @@ package com.java.curso.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -41,8 +42,10 @@ public class Funcionario implements Serializable{
 	private String complemento;
 	private String bairro;
 	private String uf;
-	private String cep;
-	private String email;
+	private String cep;	
 	private String senha;
+
+	@Column(unique = true)
+	private String email;
 
 }
