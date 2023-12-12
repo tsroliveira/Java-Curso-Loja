@@ -23,6 +23,7 @@ public class Produto implements Serializable{
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
+	private String titulo;
 	private String descricao;
 	private Double valorVenda;
 	private String categoria;	//Criar um objeto somente para categoria

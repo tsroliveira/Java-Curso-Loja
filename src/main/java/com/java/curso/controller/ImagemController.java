@@ -29,6 +29,9 @@ public class ImagemController {
 	
 	private static String caminhoImagens = "C:\\Users\\thiag\\Downloads\\Workspace\\Java_Trilha\\Java-Curso-Loja\\src\\main\\resources\\static\\img_produtos\\";
 	
+	private static String caminhoImagensDoSite = "C:\\Users\\thiag\\Downloads\\Workspace\\Java_Trilha\\Java-Curso-Loja\\src\\main\\resources\\static\\image\\";
+
+	
 	@GetMapping("/mostrarImagem/{imagem}")
 	@ResponseBody
 	public byte[] retornarImagem(@PathVariable("imagem") String imagem) throws IOException {

@@ -25,7 +25,7 @@ public class SecurityConfiguration {
         JdbcUserDetailsManager auth = new JdbcUserDetailsManager(dataSource);
         
 		auth.setUsersByUsernameQuery("select email as username, senha as password, 1 as enable from funcionario where email=?");
-		auth.setAuthoritiesByUsernameQuery("select funcionario.email as username, perfil.nome as authority from permissoes inner join funcionario on funcionario.id=permissoes.funcionario_id inner join perfil on perfil.id=permissoes.perfil_id where funcionario.email=? limit 1");
+		auth.setAuthoritiesByUsernameQuery("select funcionario.email as username, perfil.nome as authority from permissoes inner join funcionario on funcionario.id=permissoes.funcionario_id inner join perfil on perfil.id=permissoes.perfil_id where funcionario.email=?");
 		//auth.setPasswordEncoder(new BCryptPasswordEncoder());		
 		return auth;
 	}	
@@ -34,7 +34,7 @@ public class SecurityConfiguration {
 	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 	   http.authorizeHttpRequests( (authorize) -> authorize
 			 .requestMatchers("/administrativo/**").hasAnyAuthority("gerente", "vendedor")
-			 .requestMatchers("/finalizar/**").hasAnyAuthority("cliente")
+			 .requestMatchers("/finalizar/**").hasAnyAuthority("cliente","gerente","vendedor")
 			 .anyRequest().authenticated() 									//.requestMatchers("/**").permitAll()
 	   ).formLogin( (form) -> form
 	         .loginPage("/login")
@@ -48,7 +48,7 @@ public class SecurityConfiguration {
 	         .permitAll()
 	    ).exceptionHandling( (ex) -> ex
 	         .accessDeniedPage("/negado")
-	    )//.csrf().ignoringRequestMatchers("/**")
+	    ).csrf().ignoringRequestMatchers("/**")
 	  	;	   	
 	   	return http.build();
 	}

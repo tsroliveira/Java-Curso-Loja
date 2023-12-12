@@ -92,6 +92,9 @@
 							 <button id="add" name="acao" th:value="itens" type="submit" 
 							 	style="margin-top:8px" class="btn btn-primary">ADD</button>
 	                    </div>
+	                    
+	                   	<input type="hidden" id="id" th:field="*{id}" value=""/>
+
 	                </div>
 	                
 	                <div class="form-row">
@@ -120,9 +123,7 @@
 							</div>
 						</div>
 					</div>
-	                
-	                <input type="hidden" id="id" th:field="*{id}" value=""/>
-	                
+	                	                
 	                <button type="submit" class="btn btn-primary btn-lg btn-block" name="acao" th:value="salvar" >Salvar</button>
 	            </form>
 	        </div>

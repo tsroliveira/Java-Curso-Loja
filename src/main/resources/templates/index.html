@@ -1,53 +1,83 @@
 <!DOCTYPE html>
-<html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{cliente/fragments/layout}">
+<html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{/layout}">
 
 <head>
-	<title>Online Shopping</title>
+	<title>JavaStore</title>
 </head>
 
 <body>
+
 	<section class="layout-content" layout:fragment="corpo">
-		<div class="py-5">
-            <div class="container px-4 px-lg-5 mt-5">
-                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-					<!-- inicio da Exibição de Produtos -->
-                    <div class="col mb-5" th:each="produto : ${listaProdutos}">
-                        <div class="card h-100">
-                            <!-- Sale badge-->
-                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
-                            <!-- Product image-->
-                            <!--img class="img-fluid" th:src="@{/administrativo/produtos/mostrarImagem/{imagem}(imagem=${produto.nomeImagem})}" /-->
-                            <img class="card-img-top" th:src="@{/mostrarImagem/{imagem}(imagem=${produto.nomeImagem})}" style="height: 280px;width: 150px;align-self: center;" />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder"><span th:text="${produto.descricao}"></span></h5>
-                                    <!-- Product reviews-->
-                                    <div class="d-flex justify-content-center small text-warning mb-2">
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                    </div>
-                                    <!-- Product price-->
-                                    <span class="text-muted text-decoration-line-through" th:text="${#numbers.formatCurrency(produto.valorVenda + 1.9)}"></span>
-                                    <td th:text="${#numbers.formatCurrency(produto.valorVenda)}"></td>
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" th:href="@{/adicionarCarrinho/{id}(id=${produto.id})}">Comprar</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Fim da Exibição de Produtos -->
-                    <td th:text="${produto.id}"></td>
-	                <td th:text="${produto.quantidadeEstoque}"></td>
-	            </div>
-            </div>
-        </div>
+		<!-- PAGE CONTENT WRAPPER -->
+		<div class="page-content-wrap">
+
+			<div class="row">
+				<div class="container px-4 px-lg-5 mt-5">
+
+					<div class="col-md-4" th:each="produto : ${listaProdutos}">
+
+						<!-- START SALES & EVENTS BLOCK -->
+						<div class="panel panel-default">
+							<div class="panel-heading">
+								<div class="panel-title-box">
+									<h3 th:text="${produto.titulo}"></h3>
+									<span th:text="${produto.descricao}"></span>
+								</div>
+								<ul class="panel-controls" style="margin-top: 2px;">
+									<li><a href="#" class="panel-fullscreen"><span class="fa fa-expand"></span></a></li>
+									<li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
+									<li class="dropdown">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
+												class="fa fa-cog"></span></a>
+										<ul class="dropdown-menu">
+											<li><a href="#" class="panel-collapse"><span
+														class="fa fa-angle-down"></span>
+													Collapse</a></li>
+											<li><a href="#" class="panel-remove"><span class="fa fa-times"></span>
+													Remove</a></li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+							<div class="panel-body padding-1">
+								<div class="chart-holder" id="dashboard-line-1" style="height: 248px;">
+
+									<div class="d-flex justify-content-center">
+										<img class="card-img-top"
+											th:src="@{/mostrarImagem/{imagem}(imagem=${produto.nomeImagem})}"
+											style="height: 150px;width: 120px;align-self: center;" />
+									</div>
+
+									<div class="d-flex justify-content-center small text-warning mb-2">
+										<div class="bi-star-fill"></div>
+										<div class="bi-star-fill"></div>
+										<div class="bi-star-fill"></div>
+										<div class="bi-star-fill"></div>
+										<div class="bi-star-fill"></div>
+									</div>
+
+									<div class="d-flex justify-content-center">
+										<span class="text-muted text-decoration-line-through"
+											th:text="${#numbers.formatCurrency(produto.valorVenda + 1.9)}"></span>
+										<span th:text="${#numbers.formatCurrency(produto.valorVenda)}"></span>
+									</div>
+
+									<div class="card-footer p-4 pt-0 border-top-0 bg-transparent"><br>
+										<div class="text-center"><a class="btn btn-outline-dark mt-auto"
+												th:href="@{/adicionarCarrinho/{id}(id=${produto.id})}">Comprar</a>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+						<!-- END SALES & EVENTS BLOCK -->
+
+					</div>
+
+				</div>
+			</div>
+			<!-- END PAGE CONTENT WRAPPER -->
 	</section>
 
 </body>
