@@ -17,18 +17,19 @@
 	<!-- CSS INCLUDE -->
 	<link rel="stylesheet" type="text/css" id="theme" href="/atlant-varius/css/theme-dark.css" />
 	<!-- EOF CSS INCLUDE -->
-	
+
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<!-- Bootstrap core CSS -->
 	<link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 	<link href="/webjars/open-iconic/font/css/open-iconic-bootstrap.min.css" rel="stylesheet" />
 
 	<!-- Custom styles for this template -->
-    <link href="/css/styles.public.css" rel="stylesheet" />
-	
-    <!-- Bootstrap icons-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	<link href="/css/styles.public.css" rel="stylesheet" />
+
+	<!-- Bootstrap icons-->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+		integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
 </head>
 
@@ -44,8 +45,8 @@
 				<!-- START X-NAVIGATION -->
 				<ul class="x-navigation">
 					<li class="xn-logo">
-						<a href="#url"></a>
-						<a href="#" class="x-navigation-control"></a>
+						<a href="/"></a>
+						<a href="/" class="x-navigation-control"></a>
 					</li>
 					<li class="xn-profile">
 						<a href="#" class="profile-mini">
@@ -121,15 +122,15 @@
 
 					<li class="xn-title">Área do Cliente</li>
 					<li class="xn">
-						<a href="#"><span class="fa fa-tachometer"></span> <span class="xn-text">Página de
+						<a href="/"><span class="fa fa-tachometer"></span> <span class="xn-text">Página de
 								Produtos</span></a>
 					</li>
 					<li class="xn">
-						<a href="#"><span class="fa fa-shopping-cart"></span> <span class="xn-text">Carrinho de
+						<a href="/carrinho"><span class="fa fa-shopping-cart"></span> <span class="xn-text">Carrinho de
 								Compras</span></a>
 					</li>
 					<li class="xn">
-						<a href="#"><span class="fa fa-cogs"></span> <span class="xn-text">Cadastrar</span></a>
+						<a href="/cliente/cadastrar"><span class="fa fa-cogs"></span> <span class="xn-text">Cadastrar Cliente</span></a>
 					</li>
 				</ul>
 				<!-- END X-NAVIGATION -->
@@ -157,8 +158,8 @@
 					<li class="xn-icon-button pull-right last">
 						<a href="#"><span class="fa fa-power-off"></span></a>
 						<ul class="xn-drop-left animated zoomIn">
-							<li><a href="pages-lock-screen.html"><span class="fa fa-lock"></span> Lock Screen</a></li>
-							<li><a href="#" class="mb-control" data-box="#mb-signout"><span
+							<li><a href="#pages-lock-screen.html"><span class="fa fa-lock"></span> Lock Screen</a></li>
+							<li><a href="/logout" class="mb-control" data-box="#mb-signout"><span
 										class="fa fa-sign-out"></span> Sign Out</a></li>
 						</ul>
 					</li>
@@ -210,64 +211,20 @@
 						</div>
 					</li>
 					<!-- END MESSAGES -->
-					<!-- TASKS -->
+
 					<li class="xn-icon-button pull-right">
-						<a href="#"><span class="fa fa-tasks"></span></a>
-						<div class="informer informer-warning">3</div>
-						<div class="panel panel-primary animated zoomIn xn-drop-left xn-panel-dragging">
-							<div class="panel-heading">
-								<h3 class="panel-title"><span class="fa fa-tasks"></span> Tasks</h3>
-								<div class="pull-right">
-									<span class="label label-warning">3 active</span>
-								</div>
-							</div>
-							<div class="panel-body list-group scroll" style="height: 200px;">
-								<a class="list-group-item" href="#">
-									<strong>Phasellus augue arcu, elementum</strong>
-									<div class="progress progress-small progress-striped active">
-										<div class="progress-bar progress-bar-danger" role="progressbar"
-											aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"
-											style="width: 50%;">50%</div>
-									</div>
-									<small class="text-muted">John Doe, 25 Sep 2022 / 50%</small>
-								</a>
-								<a class="list-group-item" href="#">
-									<strong>Aenean ac cursus</strong>
-									<div class="progress progress-small progress-striped active">
-										<div class="progress-bar progress-bar-warning" role="progressbar"
-											aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
-											style="width: 80%;">80%</div>
-									</div>
-									<small class="text-muted"> Lourance Johns, 24 Sep 2022 / 80%</small>
-								</a>
-								<a class="list-group-item" href="#">
-									<strong>Lorem ipsum dolor</strong>
-									<div class="progress progress-small progress-striped active">
-										<div class="progress-bar progress-bar-success" role="progressbar"
-											aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"
-											style="width: 95%;">95%</div>
-									</div>
-									<small class="text-muted">John Doe, 23 Sep 2022 / 95%</small>
-								</a>
-								<a class="list-group-item" href="#">
-									<strong>Cras suscipit ac quam at tincidunt.</strong>
-									<div class="progress progress-small">
-										<div class="progress-bar" role="progressbar" aria-valuenow="100"
-											aria-valuemin="0" aria-valuemax="100" style="width: 100%;">100%</div>
-									</div>
-									<small class="text-muted">John Doe, 21 Sep 2022 /</small><small
-										class="text-success"> Done</small>
-								</a>
-							</div>
-							<div class="panel-footer text-center">
-								<a href="pages-tasks.html">Show all tasks</a>
-							</div>
-						</div>
+						<a href="#"><span class="fa fa-shopping-cart fa-lg"></span></a>
+						<div class="informer informer-success">0</div>
+						<ul class="xn-drop-left xn-drop-white animated zoomIn">
+							<li><a href="/carrinho"><img src="https://cdn-icons-png.flaticon.com/512/308/308833.png" width="24" height="24"> Visualizar Carrinho</a></li>
+						</ul>
 					</li>
-					<!-- END TASKS -->
+
+
 					<!-- LANG BAR -->
 					<li class="xn-icon-button pull-right">
 						<a href="#"><span class="flag flag-gb"></span></a>
+						
 						<ul class="xn-drop-left xn-drop-white animated zoomIn">
 							<li><a href="#"><span class="flag flag-gb"></span> English</a></li>
 							<li><a href="#"><span class="flag flag-de"></span> Deutsch</a></li>
@@ -280,8 +237,8 @@
 
 				<!-- START BREADCRUMB -->
 				<ul class="breadcrumb">
-					<li><a href="#">Home</a></li>
-					<li class="active">Dashboard</li>
+					<li><a href="/">Home</a></li>
+					<!--li class="active">Dashboard</li-->
 				</ul>
 				<!-- END BREADCRUMB -->
 
@@ -308,8 +265,8 @@
 				</div>
 				<div class="mb-footer">
 					<div class="pull-right">
-						<a href="pages-login.html" class="btn btn-success btn-lg">Yes</a>
-						<button class="btn btn-default btn-lg mb-control-close">No</button>
+						<a href="/logout" class="btn btn-success btn-lg">Yes</a>
+						<button class="btn btn-default btn-lg mb-control-close text-white">No</button>
 					</div>
 				</div>
 			</div>

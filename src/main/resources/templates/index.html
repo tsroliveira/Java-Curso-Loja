@@ -8,6 +8,7 @@
 <body>
 
 	<section class="layout-content" layout:fragment="corpo">
+
 		<!-- PAGE CONTENT WRAPPER -->
 		<div class="page-content-wrap">
 
@@ -23,21 +24,6 @@
 									<h3 th:text="${produto.titulo}"></h3>
 									<span th:text="${produto.descricao}"></span>
 								</div>
-								<ul class="panel-controls" style="margin-top: 2px;">
-									<li><a href="#" class="panel-fullscreen"><span class="fa fa-expand"></span></a></li>
-									<li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
-									<li class="dropdown">
-										<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span
-												class="fa fa-cog"></span></a>
-										<ul class="dropdown-menu">
-											<li><a href="#" class="panel-collapse"><span
-														class="fa fa-angle-down"></span>
-													Collapse</a></li>
-											<li><a href="#" class="panel-remove"><span class="fa fa-times"></span>
-													Remove</a></li>
-										</ul>
-									</li>
-								</ul>
 							</div>
 							<div class="panel-body padding-1">
 								<div class="chart-holder" id="dashboard-line-1" style="height: 248px;">
@@ -45,7 +31,7 @@
 									<div class="d-flex justify-content-center">
 										<img class="card-img-top"
 											th:src="@{/mostrarImagem/{imagem}(imagem=${produto.nomeImagem})}"
-											style="height: 150px;width: 120px;align-self: center;" />
+											style="height: 144px;width: 112px;align-self: center;" />
 									</div>
 
 									<div class="d-flex justify-content-center small text-warning mb-2">
