@@ -1,14 +1,18 @@
 <!DOCTYPE html>
-<html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{cliente/fragments/layout}">
+<html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{/layout}">
 
 <head>
-	<title>Finalizar Compra</title>
+	<title>JavaStore</title>
 </head>
 
 <body>
+
 	<section class="layout-content" layout:fragment="corpo">
-		<form action="/finalizar/confirmar2123123" method="POST">
-			<div class="py-5">
+
+		<!-- PAGE CONTENT WRAPPER -->
+		<div class="page-content-wrap">
+
+			<form action="/finalizar/confirmar2123123" method="POST">
 				<div class="container mb-4">
 					<div class="row">
 						<div class="col-12">
@@ -41,12 +45,19 @@
 									</thead>
 									<tbody>
 										<tr th:each="item : ${listaItens}">
-											<td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
+											<td>
+												<img class="card-img-top"
+													th:src="@{/mostrarImagem/{imagem}(imagem=${item.produto.nomeImagem})}"
+													style="height: 70px;width: 60px;align-self: center;" />
+											</td>
 											<td th:text="${item.produto.descricao}"></td>
 											<td>Em estoque</td>
-											<td class="text-center"><span th:text="${item.quantidade}"></span></td>
-											<td class="text-right"><span th:text="${item.valorUnitario}"></span></td>
-											<td class="text-right"><span th:text="${item.valorTotal}"></span></td>
+											<td class="text-center"><span th:text="${item.quantidade}"></span>
+											</td>
+											<td class="text-right"><span th:text="${item.valorUnitario}"></span>
+											</td>
+											<td class="text-right"><span th:text="${item.valorTotal}"></span>
+											</td>
 											<td class="text-right"></td>
 										</tr>
 
@@ -57,7 +68,8 @@
 											<td></td>
 											<td></td>
 											<td class="text-right">Sub-Total</td>
-											<td class="text-right"><span th:text="${compra.valorTotal}"></span> € &nbsp;
+											<td class="text-right"><span th:text="${compra.valorTotal}"></span>
+												€ &nbsp;
 											</td>
 										</tr>
 										<tr>
@@ -95,9 +107,12 @@
 						</div>
 					</div>
 				</div>
-			</div>
-		</form>
+			</form>
+
+		</div>
+		<!-- END PAGE CONTENT WRAPPER -->
 	</section>
+
 </body>
 
 </html>

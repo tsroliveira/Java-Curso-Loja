@@ -3,7 +3,6 @@ package com.java.curso;
 import javax.sql.DataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -35,7 +34,8 @@ public class SecurityConfiguration {
 	   http.authorizeHttpRequests( (authorize) -> authorize
 			 .requestMatchers("/administrativo/**").hasAnyAuthority("gerente", "vendedor")
 			 .requestMatchers("/finalizar/**").hasAnyAuthority("cliente","gerente","vendedor")
-			 .anyRequest().authenticated() 									//.requestMatchers("/**").permitAll()
+			 .requestMatchers("/**").permitAll()
+			 .anyRequest().authenticated() 									//
 	   ).formLogin( (form) -> form
 	         .loginPage("/login")
 	         .defaultSuccessUrl("/", true)

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{cliente/fragments/layout}">
+<html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{/layout}">
 
 <head>
 	<title>Finalizar Compra</title>
@@ -39,7 +39,11 @@
 								</thead>
 								<tbody>
 									<tr th:each="item : ${listaItens}">
-										<td><img src="https://dummyimage.com/50x50/55595c/fff" /> </td>
+										<td>
+											<img class="card-img-top"
+												th:src="@{/mostrarImagem/{imagem}(imagem=${item.produto.nomeImagem})}"
+												style="height: 70px;width: 60px;align-self: center;" />
+										</td>
 										<td th:text="${item.produto.descricao}"></td>
 										<td>Em estoque</td>
 										<td class="text-center"><span th:text="${item.quantidade}"></span></td>
