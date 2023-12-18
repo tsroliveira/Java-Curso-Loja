@@ -29,6 +29,7 @@ public class CarrinhoController {
 	private List<ItensCompra> itensCompra = new ArrayList<ItensCompra>();
 	private Compra compra = new Compra();
 	private Cliente cliente;
+	private String message = "";
 
 	@Autowired
 	private ProdutoRepositorio produtoRepositorio;
@@ -55,6 +56,8 @@ public class CarrinhoController {
 		calcularTotal();
 		mv.addObject("compra", compra);
 		mv.addObject("listaItens", itensCompra);
+		mv.addObject("message", message);
+		message = "";
 		return mv;
 	}
 
@@ -75,13 +78,32 @@ public class CarrinhoController {
 		mv.addObject("compra", compra);
 		mv.addObject("listaItens", itensCompra);
 		mv.addObject("cliente", cliente);
-		return mv;
+		mv.addObject("message", message);
+				
+		if (itensCompra.size() == 0) {
+			message = "Para finalizar uma compra é preciso selecionar um produto.";
+			return chamarCarrinho();
+		}
+		else {
+			return mv;
+		}
 	}
 
+	@GetMapping("/finalizar/confirmar")
+	public ModelAndView confirmarCompraRedirect() {
+		message = "Não existem itens no carrinho de compras!";
+		return chamarCarrinho();
+	}
+	
 	@PostMapping("/finalizar/confirmar")
 	public ModelAndView confirmarCompra(String formaPagamento) {
 		ModelAndView mv = new ModelAndView("cliente/compraFinalizada");
-		System.out.println('1');
+
+		if (itensCompra.size() == 0) {
+			message = "Não existem itens no carrinho de compras!";
+			return chamarCarrinho();
+		}
+		
 		compra.setCliente(cliente);
 		compra.setFormaPagamento(formaPagamento);
 		compraRepositorio.saveAndFlush(compra);
@@ -91,9 +113,17 @@ public class CarrinhoController {
 			itensRepositorio.saveAndFlush(c);
 		}
 
-		itensCompra = new ArrayList<>();
-		compra = new Compra();
+		mv.addObject("compra", compra);
+		mv.addObject("listaItens", itensCompra);
+		mv.addObject("cliente", cliente);
 
+		message = "Compra realizada com sucesso!";
+		mv.addObject("message", message);
+		message = "";
+		
+		compra = new Compra();
+		itensCompra = new ArrayList<>();
+		
 		return mv;
 	}
 

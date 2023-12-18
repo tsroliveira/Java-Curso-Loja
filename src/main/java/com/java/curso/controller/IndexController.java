@@ -28,4 +28,12 @@ public class IndexController {
 		return mv;
 	}
 	
+	@GetMapping("/galery")
+	public ModelAndView galery() {
+		ModelAndView mv = new ModelAndView("/galery");
+		mv.addObject("listaProdutos", produtoRepositorio.findAll());
+		mv.addObject("listaItens", itensCompra);
+		return mv;
+	}
+	
 }

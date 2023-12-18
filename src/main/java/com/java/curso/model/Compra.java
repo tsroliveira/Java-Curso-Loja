@@ -3,6 +3,8 @@ package com.java.curso.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -30,6 +32,7 @@ public class Compra implements Serializable{
 	@ManyToOne
 	private Cliente cliente;
 	@Temporal(TemporalType.TIMESTAMP)
+	@CreationTimestamp
 	private Date dataCompra;
 
 	private String formaPagamento;
