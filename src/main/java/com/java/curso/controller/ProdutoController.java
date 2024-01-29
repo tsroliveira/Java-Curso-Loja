@@ -55,6 +55,20 @@ public class ProdutoController {
 			return cadastrar(produto);
 		}
 		
+		if(arquivo.isEmpty()) {
+			
+			if (produto.getId() != null) {
+								
+				Optional<Produto> produto_temp = produtoRepositorio.findById(produto.getId());
+			
+				if(!produto_temp.isEmpty()) {
+					produto.setNomeImagem(produto_temp.get().getNomeImagem());				
+				}
+				
+			}
+			
+		}
+		
 		//Salvamos o produto primeiro para abaixo utilizarmos o ID dele para concatenar com o nome da imagem;
 		produtoRepositorio.saveAndFlush(produto);
 		
